@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export MY_PYTHON=python3.8
+export MY_PYTHON=python3
 #export MY_PYTHON=/usr/local/opt/python@3.8/bin/python3.8
 
 echo "Cleaning cached indexes"
