@@ -1,13 +1,5 @@
 #!/usr/bin/env python3
-from __future__ import absolute_import
-from __future__ import print_function
-from __future__ import unicode_literals
-from __future__ import division
-
 from builtins import open
-from future import standard_library
-
-standard_library.install_aliases()
 from builtins import next
 import csv
 import os
@@ -354,4 +346,5 @@ def iterRecords():
             w.writerow(b)
 
 
-iterRecords()
+if __name__ == '__main__':
+    iterRecords()

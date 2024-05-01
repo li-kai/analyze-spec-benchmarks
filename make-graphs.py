@@ -1,16 +1,5 @@
 #!/usr/bin/env python3
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
-
-from builtins import dict
-from builtins import open
-from builtins import round
-from builtins import int
-from future import standard_library
-
-standard_library.install_aliases()
+from builtins import int, round, open, dict
 import collections
 import csv
 import datetime
@@ -385,7 +374,7 @@ def RenderGraph(mode, resultsByBrand, outPath):
     allRibs = sum(list(resultsByBrand.values()), [])
     maxDate = max([r.hwDate for r in allRibs])
     months = monthDelta(minDate, maxDate)
-    maxLogScore = int(round(math.log(max([r.convertedScore for r in allRibs]), 2)))
+    maxLogScore = int(math.ceil(math.log(max([r.convertedScore for r in allRibs]), 2)))
     logScoreRange = maxLogScore - minLogScore
     pelsPerMonth = min((maxGraphSize[0] / months),
                        (maxGraphSize[1] / logScoreRange * pixelAspect))
@@ -624,7 +613,7 @@ for MODE in ['INT', 'FP']:
     for rib in list(resultsByBrand.values()):
         rib.sort()
 
-    # Dump results file.                                             
+    # Dump results file.
     with redirected_to_file('%s_report.txt' % MODE.lower()):
         print('%s = %f x %s' % (benchTypes[1], ratio2000, benchTypes[0]))
         print('%s = %f x %s' % (benchTypes[2], ratio2006, benchTypes[1]))
